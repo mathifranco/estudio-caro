@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@200;300;400&display=swap');
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'TAN-Nightingale';
+  /* Asegúrate de que el nombre del archivo sea exactamente este */
+  src: url('./assets/fonts/TAN-NIGHTINGALE-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Esto ayuda a que el texto no sea invisible mientras carga */
+}
+
+@theme {
+  --font-nightingale: "TAN-Nightingale", serif;
+  --color-hueso: #E9E7E2;
+  --color-primario: #5c554e;
+  --color-acento: #b08471;
+  
+  /* Registramos la nueva fuente aquí para usar font-nightingale */
+  --font-nightingale: "TAN-Nightingale", serif;
+  --font-editorial: "Cormorant Infant", serif;
+  --font-base: "Montserrat", sans-serif;
+}
