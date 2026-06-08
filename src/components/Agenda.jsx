@@ -22,7 +22,7 @@ const Agenda = () => {
       slug: "lifting-pestanas-con-cejas" 
     },
     { 
-      nombre: "Cejas con Hilos", 
+      nombre: "Cejas con Hilos / Mantenimiento", 
       categoria: ["Hilos"],
       descripcion: "Diseño y depilación de cejas con hilos. Se recomiendan mantenimientos cada 4 semanas.",
       foto: hilos, 
@@ -36,18 +36,11 @@ const Agenda = () => {
       slug: "cejas-bozo" 
     },
     { 
-      nombre: "Extensiones Pestañas 1x1", 
+      nombre: "Extensiones Pestañas / Retoques", 
       categoria: ["Ojos"],
       descripcion: "Una extensión sobre cada pestaña natural.",
       foto: lifting, 
       slug: "extensiones" 
-    },
-    { 
-      nombre: "Retoque de Extensiones", 
-      categoria: ["Retoques"],
-      descripcion: "Retoque de extensiones. Se recomiendan mantenimientos cada 3 a 4 semanas.",
-      foto: lifting, 
-      slug: "retoque-extensiones" 
     },
     { 
       nombre: "Maquillaje Social (en estudio)", 
@@ -64,13 +57,6 @@ const Agenda = () => {
       slug: "cejas" 
     },
     { 
-      nombre: "Mantenimiento Cejas", 
-      categoria: ["Retoques"],
-      descripcion: "Diseño y depilación de cejas con hilos. Se recomiendan mantenimientos cada 4 semanas.",
-      foto: hilos, 
-      slug: "mantenimiento-cejas" 
-    },
-    { 
       nombre: "Bozo con Hilos", 
       categoria: ["Hilos"],
       descripcion: "Diseño y depilación de cejas con hilos. Se recomiendan mantenimientos cada 4 semanas.",
@@ -85,32 +71,18 @@ const Agenda = () => {
       slug: "rostro-con-hilos" 
     },
     { 
-      nombre: "Brow Tinting", 
+      nombre: "Brow Tinting / Retoques", 
       categoria: ["Ojos", "Hilos"],
       descripcion: "Tinte en cejas. Incluye diseño y depilación de cejas con hilos.",
       foto: cejasok, 
       slug: "brow-tinting" 
     },
     { 
-      nombre: "Retoque Brow Tinting", 
-      categoria: ["Retoques"],
-      descripcion: "Tinte en cejas. Incluye diseño y depilación de cejas con hilos.",
-      foto: cejasok, 
-      slug: "retoque-brow-tinting" 
-    },
-    { 
-      nombre: "Laminado de Cejas", 
+      nombre: "Laminado de Cejas / Retoques", 
       categoria: ["Ojos", "Hilos"],
       descripcion: "Tinte en cejas. Incluye diseño y depilación de cejas con hilos.",
       foto: cejasok, 
       slug: "laminado-cejas" 
-    },
-    { 
-      nombre: "Retoque Laminado de Cejas", 
-      categoria: ["Retoques"],
-      descripcion: "Mantenimiento Tinte en cejas. Incluye diseño y depilación de cejas con hilos.",
-      foto: cejasok, 
-      slug: "mantenimiento-laminado-de-cejas" 
     },
     { 
       nombre: "Hidratación Labios", 

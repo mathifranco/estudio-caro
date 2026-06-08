@@ -44,7 +44,7 @@ const Brides = () => {
         <span className="font-base text-[10px] tracking-[5px] uppercase opacity-50">Servicio Exclusivo</span>
         <h1 className="font-editorial italic text-6xl md:text-8xl mt-4 text-acento">The Bride Experience</h1>
         <p className="mt-8 font-base text-lg max-w-2xl leading-relaxed opacity-70">
-          Acompañamos tu camino al altar con un servicio diseñado para resaltar tu esencia más pura. 
+          Acompañamos tu camino al altar con un servicio diseñado para resaltar tu esencia natural. 
           Desde la primera entrevista hasta el último detalle en el gran día.
         </p>
       </section>
@@ -56,18 +56,15 @@ const Brides = () => {
           <ul className="space-y-8 font-base text-sm opacity-80">
             <li>
               <span className="block font-bold uppercase tracking-widest text-[10px] mb-2 text-primario">01. Entrevista Inicial</span>
-              Conversamos sobre tu estilo, el vestido y la atmósfera de la boda. Esta instancia es super importante para conocernos, sacarnos dudas y consultar todo lo que quieras.
+              Una charla por zoom previa a reservar para poder conocernos. Conversamos sobre tu estilo, el vestido y la atmósfera de la boda. Esta instancia es super importante para sacarnos dudas y consultar todo lo que quieras.
             </li>
             <li>
               <span className="block font-bold uppercase tracking-widest text-[10px] mb-2 text-primario">02. Prueba de Maquillaje</span>
-              Realizaremos maquillaje y/o peinado, junto con la prueba previa. La prueba de maquillaje y peinado se lleva a cabo en mi estudio, y la prueba de peinado puede realizarse en conjunto con la tocadista, si así lo deseas.
+              La prueba de maquillaje y peinado se recomienda <b>1 mes antes del evento</b> aproximadamente. Se lleva a cabo en mi estudio, y la prueba de peinado puede realizarse en conjunto con la tocadista, si así lo deseas.
             </li>
             <li>
               <span className="block font-bold uppercase tracking-widest text-[10px] mb-2 text-primario">03. El día de la Boda</span>
-              El día de la boda, el servicio se realiza en la locación de tu elección en el interior del país (pueden aplicarse viáticos adicionales en algunas zonas).
-              Además, como obsequio, podrás realizarte el diseño de cejas y depilación con hilo.
-              El día del evento, estaré contigo hasta que estés lista, realizando los retoques necesarios para que luzcas perfecta.
-              Para poder acompañarte en el interior, se deben contratar en total un mínimo de 6 servicios entre tu y tus acompañantes.
+El día de la boda, el servicio se realiza en la locación de tu elección dentro de Montevideo (pueden aplicarse viáticos adicionales en algunas zonas). El día del evento, estaré contigo hasta que estés lista, realizando los retoques necesarios para que luzcas perfecta. Para poder acompañarte en el interior, se deben contratar en total un mínimo de 6 servicios entre tu y tus acompañantes.
             </li>
           </ul>
         </div>
@@ -101,14 +98,14 @@ const Brides = () => {
         download="Novias Presupuesto Caro Pereyra 2026 2027.pdf" // Nombre con el que se guardará en la PC de la novia
         className="border border-hueso/30 px-10 py-4 uppercase text-[10px] tracking-[4px] hover:bg-hueso hover:text-primario transition-all flex items-center justify-center"
         >
-        Descargar Presupuesto 2026
+        Descargar Presupuesto
         </a>
 
         <a 
         href="https://wa.me/+59891855090" 
         className="bg-acento px-10 py-4 uppercase text-[10px] tracking-[4px] hover:bg-opacity-90 transition-all flex items-center justify-center"
         >
-        Charlemos
+        Solicitar entrevista
         </a>
     </div>
     </section>

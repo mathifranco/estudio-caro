@@ -39,7 +39,7 @@ const AboutSection = () => {
             HOLA, SOY CARO
           </h2>
           <p className="font-base text-sm leading-relaxed text-gray-600 max-w-md">
-            Maquilladora y peinadora con 10 años de experiencia. Mi pasión es hacer que cada novia se sienta única y especial en su gran día. Mi objetivo es acompañarte en cada paso del proceso, brindándote confianza y creando un look que refleje tu estilo y personalidad. Sé lo importante que es este día para ti, así que sería un honor ser parte de tu celebración!
+            Soy maquilladora y peinadora especializada en el maquillaje para pieles con patologías. Con más de 10 años de experiencia, mi objetivo es realzar la belleza natural de cada persona, buscando que cada experiencia no sea solo un servicio de estética, sino un momento para conectar con una misma, sentirse segura y disfrutar de cada ocasión especial. También realizo diseño de cejas y servicios beauty pensados para acompañarte en tu día a día y en tus momentos más importantes.
           </p>
                     
                     {}
