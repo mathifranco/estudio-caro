@@ -1,184 +1,286 @@
-import React, { useState } from 'react';
-import { PopupModal } from 'react-calendly';
-import lifting from '../assets/img/lifting.webp';
-import lifting2 from '../assets/img/lifting2.webp';
-import curso1 from '../assets/img/curso1.webp';
-import cejasok from '../assets/img/cejasok.webp';
-import hilos from '../assets/img/hilos.webp';
-import labios from '../assets/img/labios.webp';
+import React, { useEffect, useState } from "react";
+
+import AcuityModal from "./createPortal";
+
+import lifting from "../assets/img/lifting.webp";
+import lifting2 from "../assets/img/lifting2.webp";
+import curso1 from "../assets/img/curso1.webp";
+import cejasok from "../assets/img/cejasok.webp";
+import hilos from "../assets/img/hilos.webp";
+import labios from "../assets/img/labios.webp";
+import peinado1 from "../assets/img/peinado1.webp";
+import inspo3 from "../assets/img/inspo3.webp";
+
+const ACUITY_OWNER_ID = "21321386";
+
+const servicios = [
+  {
+    nombre: "Lifting Pestañas + Cejas",
+    categoria: ["Promos"],
+    descripcion: "Tratamiento combinado de lifting y perfilado.",
+    foto: lifting2,
+    appointmentType: "18579250",
+  },
+  {
+    nombre: "Cejas con Hilos / Mantenimiento",
+    categoria: ["Cejas y Depilacion"],
+    descripcion:
+      "Diseño y depilación de cejas con hilos. Se recomiendan mantenimientos cada 4 semanas.",
+    foto: hilos,
+    appointmentType: "18578965",
+  },
+  {
+    nombre: "Cejas + Bozo",
+    categoria: ["Promos"],
+    descripcion: "Servicio integral de diseño de cejas y depilación de bozo.",
+    foto: hilos,
+    appointmentType: "18579148",
+  },
+  {
+    nombre: "Extensiones Pestañas / Retoques",
+    categoria: ["Pestañas"],
+    descripcion: "Una extensión sobre cada pestaña natural.",
+    foto: lifting,
+    appointmentType: "79293978",
+  },
+  {
+    nombre: "Lifting Pestañas / Retoques",
+    categoria: ["Pestañas"],
+    descripcion:
+      "Tratamiento para levantar, curvar y realzar las pestañas naturales.",
+    foto: lifting,
+    appointmentType: "18579177",
+  },
+  {
+    nombre: "Maquillaje Social y Peinado",
+    categoria: ["Promos"],
+    descripcion: "Maquillaje social y peinado para ocasiones especiales.",
+    foto: curso1,
+    appointmentType: "39297606",
+  },
+  {
+    nombre: "Maquillaje Social (en mi Estudio)",
+    categoria: ["Maquillaje y Peinado"],
+    descripcion: "Maquillaje profesional realizado en el estudio.",
+    foto: curso1,
+    appointmentType: "18853043",
+  },
+  {
+    nombre: "Bozo con Hilos",
+    categoria: ["Cejas y Depilacion"],
+    descripcion: "Depilación del bozo mediante la técnica con hilo.",
+    foto: hilos,
+    appointmentType: "18579069",
+  },
+  {
+    nombre: "Rostro completo con Hilos",
+    categoria: ["Cejas y Depilacion"],
+    descripcion:
+      "Incluye diseño y depilación de cejas, bozo, mentón, mejillas y patillas.",
+    foto: hilos,
+    appointmentType: "18579127",
+  },
+  {
+    nombre: "Brow Tinting / Mantenimiento",
+    categoria: ["Cejas y Depilacion"],
+    descripcion:
+      "Tinte en cejas. Incluye diseño y depilación de cejas con hilos.",
+    foto: cejasok,
+    appointmentType: "18875507",
+  },
+  {
+    nombre: "Laminado de Cejas / Mantenimiento",
+    categoria: ["Cejas y Depilacion"],
+    descripcion:
+      "Laminado, diseño y depilación de cejas. Mantenimiento recomendado cada 4 semanas.",
+    foto: cejasok,
+    appointmentType: "47990328",
+  },
+  {
+    nombre: "Hidratación Labios",
+    categoria: ["Labios"],
+    descripcion:
+      "Tratamiento de hidratación labial mediante un dispositivo de microneedling.",
+    foto: labios,
+    appointmentType: "67860486",
+  },
+  {
+    nombre: "Ondas (en mi Estudio)",
+    categoria: ["Maquillaje y Peinado"],
+    descripcion: "Peinado con ondas realizado en el estudio.",
+    foto: peinado1,
+    appointmentType: "79107082",
+  },
+    {
+    nombre: "Mini Makeup (en mi Estudio)",
+    categoria: ["Maquillaje y Peinado"],
+    descripcion: "Maquillaje mini, realizado en el estudio.",
+    foto: inspo3,
+    appointmentType: "70307993",
+  },
+
+
+  
+];
+
+const categorias = [
+  "Promos",
+  "Cejas y Depilacion",
+  "Pestañas",
+  "Labios",
+  "Maquillaje y Peinado",
+  "Todos",
+];
 
 const Agenda = () => {
   const [filtro, setFiltro] = useState("Todos");
-  const [isOpen, setIsOpen] = useState(false);
   const [selectedUrl, setSelectedUrl] = useState("");
-  const usuario = "caropereyra";
 
-  const servicios = [
-    { 
-      nombre: "Lifting Pestañas + Cejas", 
-      categoria: ["Ojos"],
-      descripcion: "Tratamiento combinado de lifting y perfilado.",
-      foto: lifting2, 
-      slug: "lifting-pestanas-con-cejas" 
-    },
-    { 
-      nombre: "Cejas con Hilos / Mantenimiento", 
-      categoria: ["Hilos"],
-      descripcion: "Diseño y depilación de cejas con hilos. Se recomiendan mantenimientos cada 4 semanas.",
-      foto: hilos, 
-      slug: "cejas"
-    },
-    { 
-      nombre: "Cejas + Bozo", 
-      categoria: ["Hilos"],
-      descripcion: "Servicio integral para producciones y editoriales.",
-      foto: hilos, 
-      slug: "cejas-bozo" 
-    },
-    { 
-      nombre: "Extensiones Pestañas / Retoques", 
-      categoria: ["Ojos"],
-      descripcion: "Una extensión sobre cada pestaña natural.",
-      foto: lifting, 
-      slug: "extensiones" 
-    },
-    { 
-      nombre: "Maquillaje Social (en estudio)", 
-      categoria: ["Social"],
-      descripcion: "Resaltá tu belleza",
-      foto: curso1, 
-      slug: "maquillaje-social" 
-    },
-    { 
-      nombre: "Diseño y Perfilado de Cejas", 
-      categoria: ["Hilos"],
-      descripcion: "Diseño personalizado según tu morfología facial.",
-      foto: hilos, 
-      slug: "cejas" 
-    },
-    { 
-      nombre: "Bozo con Hilos", 
-      categoria: ["Hilos"],
-      descripcion: "Diseño y depilación de cejas con hilos. Se recomiendan mantenimientos cada 4 semanas.",
-      foto: hilos, 
-      slug: "bozo-con-hilos" 
-    },
-    { 
-      nombre: "Rostro completo con Hilos", 
-      categoria: ["Hilos"],
-      descripcion: "Depilación de rostro completo con hilos. Incluye diseño y depilación de cejas, bozo y mentón, mejillas y patillas.",
-      foto: hilos, 
-      slug: "rostro-con-hilos" 
-    },
-    { 
-      nombre: "Brow Tinting / Retoques", 
-      categoria: ["Ojos", "Hilos"],
-      descripcion: "Tinte en cejas. Incluye diseño y depilación de cejas con hilos.",
-      foto: cejasok, 
-      slug: "brow-tinting" 
-    },
-    { 
-      nombre: "Laminado de Cejas / Retoques", 
-      categoria: ["Ojos", "Hilos"],
-      descripcion: "Tinte en cejas. Incluye diseño y depilación de cejas con hilos.",
-      foto: cejasok, 
-      slug: "laminado-cejas" 
-    },
-    { 
-      nombre: "Hidratación Labios", 
-      categoria: ["Labios"],
-      descripcion: "Procedimiento estético que utiliza un dispositivo de microneedling (Dermapen)",
-      foto: labios, 
-      slug: "hidratacion-labios" 
-    },
-  ];
+  const modalAbierto = Boolean(selectedUrl);
 
-  const categorias = ["Todos", "Ojos", "Hilos", "Labios", "Social", "Retoques"];
-  
-  const serviciosFiltrados = filtro === "Todos" 
-    ? servicios 
-    : servicios.filter(s => s.categoria.includes(filtro));
+  const serviciosFiltrados =
+    filtro === "Todos"
+      ? servicios
+      : servicios.filter((servicio) =>
+          servicio.categoria.includes(filtro),
+        );
 
-  const manejarReserva = (slug) => {
-    setSelectedUrl(`https://calendly.com/${usuario}/${slug}`);
-    setIsOpen(true);
+  const manejarReserva = (appointmentType) => {
+    const params = new URLSearchParams({
+      owner: ACUITY_OWNER_ID,
+      appointmentType,
+    });
+
+    const acuityUrl =
+      `https://app.acuityscheduling.com/schedule.php?${params.toString()}`;
+
+    setSelectedUrl(acuityUrl);
   };
 
+  const cerrarModal = () => {
+    setSelectedUrl("");
+  };
+
+  // Permite cerrar la agenda con Escape.
+  useEffect(() => {
+    if (!modalAbierto) return undefined;
+
+    const manejarEscape = (event) => {
+      if (event.key === "Escape") {
+        cerrarModal();
+      }
+    };
+
+    window.addEventListener("keydown", manejarEscape);
+
+    return () => {
+      window.removeEventListener("keydown", manejarEscape);
+    };
+  }, [modalAbierto]);
+
   return (
-    <div id="agenda" className="min-h-screen bg-[#fdfcf9] p-4 md:p-8 pt-24 font-light antialiased">
-      <div className="max-w-6xl mx-auto text-center mb-10">
-        <h2 className="text-3xl md:text-4xl text-[#a19b9b] uppercase tracking-[0.2em] mb-4">
-          Reserva tu cita
-        </h2>
-        <div className="w-16 h-px bg-[#a19b9b] mx-auto mb-8"></div>
+    <>
+      <section
+        id="agenda"
+        className="min-h-screen bg-[#fdfcf9] p-4 pt-24 font-light antialiased md:p-8 md:pt-24"
+      >
+        <div className="mx-auto mb-10 max-w-6xl text-center">
+          <h2 className="mb-4 text-3xl uppercase tracking-[0.2em] text-[#a19b9b] md:text-4xl">
+            Reserva tu cita
+          </h2>
 
-        <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-8">
-          {categorias.map(cat => (
-            <button
-              key={cat}
-              onClick={() => setFiltro(cat)}
-              className={`text-[9px] md:text-xs uppercase tracking-widest pb-1 transition-all ${
-                filtro === cat ? "text-[#a19b9b] border-b border-[#a19b9b]" : "text-gray-400"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+          <div className="mx-auto mb-8 h-px w-16 bg-[#a19b9b]" />
+
+          <div className="mb-8 flex flex-wrap justify-center gap-4 md:gap-8">
+            {categorias.map((categoria) => {
+              const estaActiva = filtro === categoria;
+
+              return (
+                <button
+                  key={categoria}
+                  type="button"
+                  onClick={() => setFiltro(categoria)}
+                  aria-pressed={estaActiva}
+                  className={[
+                    "border-b pb-1 text-[9px] uppercase tracking-widest transition-colors md:text-xs",
+                    estaActiva
+                      ? "border-[#a19b9b] text-[#a19b9b]"
+                      : "border-transparent text-gray-400 hover:text-[#777]",
+                  ].join(" ")}
+                >
+                  {categoria}
+                </button>
+              );
+            })}
+          </div>
         </div>
-      </div>
 
-      <div className="flex flex-col gap-6 max-w-5xl mx-auto">
-        {serviciosFiltrados.map((s, i) => (
-          <div 
-            key={i} 
-            className="relative flex flex-row items-center bg-white border border-gray-100 shadow-sm overflow-hidden h-[160px] md:h-[200px]"
-          >
-            {/* Imagen en Desktop */}
-            <div className="hidden md:block w-1/4 h-full overflow-hidden">
-              <img src={s.foto} alt={s.nombre} className="w-full h-full object-cover" />
-            </div>
-
-            {/* Imagen de fondo en Móvil */}
-            <div className="absolute inset-0 z-0 md:hidden opacity-30">
-              <img src={s.foto} alt={s.nombre} className="w-full h-full object-cover" />
-            </div>
-
-            <div className="relative z-10 flex-1 flex items-center justify-between px-6 md:px-12">
-              <div className="max-w-[65%]">
-                <span className="text-[8px] md:text-[9px] uppercase tracking-[0.3em] text-[#a19b9b] mb-1 block">
-                  {s.categoria.join(" + ")}
-                </span>
-                <h3 className="text-sm md:text-xl text-[#4d5055] uppercase tracking-widest mb-1 md:mb-2 font-normal">
-                  {s.nombre}
-                </h3>
-                <p className="text-[10px] md:text-sm text-gray-500 italic line-clamp-2 md:line-clamp-none">
-                  {s.descripcion}
-                </p>
+        <div className="mx-auto flex max-w-5xl flex-col gap-6">
+          {serviciosFiltrados.map((servicio) => (
+            <article
+              key={servicio.appointmentType}
+              className="relative flex h-[160px] flex-row items-center overflow-hidden border border-gray-100 bg-white shadow-sm md:h-[200px]"
+            >
+              {/* Imagen en escritorio */}
+              <div className="hidden h-full w-1/4 overflow-hidden md:block">
+                <img
+                  src={servicio.foto}
+                  alt={servicio.nombre}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
               </div>
 
-              <button
-                onClick={() => manejarReserva(s.slug)}
-                className="whitespace-nowrap border border-[#a19b9b] px-4 py-2 md:px-8 md:py-3 text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-[#4d5055] bg-transparent hover:bg-[#a19b9b] hover:text-white transition-all font-light"
-              >
-                Reservar
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
+              {/* Imagen decorativa de fondo en móvil */}
+              <div className="pointer-events-none absolute inset-0 z-0 opacity-30 md:hidden">
+                <img
+                  src={servicio.foto}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
 
-      <PopupModal
-        url={selectedUrl}
-        pageSettings={{
-          backgroundColor: 'fdfcf9',
-          primaryColor: 'a19b9b',
-          textColor: '4d5055'
-        }}
-        onModalClose={() => setIsOpen(false)}
-        open={isOpen}
-        rootElement={document.getElementById("root")}
-      />
-    </div>
+                <div className="absolute inset-0 bg-white/20" />
+              </div>
+
+              <div className="relative z-10 flex min-w-0 flex-1 items-center justify-between gap-3 px-5 md:gap-6 md:px-12">
+                <div className="min-w-0 max-w-[65%]">
+                  <span className="mb-1 block text-[8px] uppercase tracking-[0.3em] text-[#a19b9b] md:text-[9px]">
+                    {servicio.categoria.join(" + ")}
+                  </span>
+
+                  <h3 className="mb-1 text-sm font-normal uppercase tracking-widest text-[#4d5055] md:mb-2 md:text-xl">
+                    {servicio.nombre}
+                  </h3>
+
+                  <p className="line-clamp-2 text-[10px] italic text-gray-500 md:line-clamp-none md:text-sm">
+                    {servicio.descripcion}
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() =>
+                    manejarReserva(servicio.appointmentType)
+                  }
+                  className="shrink-0 whitespace-nowrap border border-[#a19b9b] bg-white/60 px-3 py-2 text-[9px] uppercase tracking-[0.15em] text-[#4d5055] transition-colors hover:bg-[#a19b9b] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#a19b9b]/40 md:px-8 md:py-3 md:text-[10px] md:tracking-[0.2em]"
+                >
+                  Reservar
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {modalAbierto && (
+        <AcuityModal
+          url={selectedUrl}
+          onClose={cerrarModal}
+        />
+      )}
+    </>
   );
 };
 

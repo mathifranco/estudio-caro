@@ -3,11 +3,10 @@
 
 @font-face {
   font-family: 'TAN-Nightingale';
-  /* Asegúrate de que el nombre del archivo sea exactamente este */
   src: url('./assets/fonts/TAN-NIGHTINGALE-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
-  font-display: swap; /* Esto ayuda a que el texto no sea invisible mientras carga */
+  font-display: swap; 
 }
 
 @theme {
